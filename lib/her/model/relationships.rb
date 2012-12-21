@@ -160,7 +160,7 @@ module Her
           attrs = {
             :class_name => name.to_s.classify,
             :name => name,
-            :foreign_key => "#{name}_id",
+            :foreign_key => attrs[:foreign_key].present? ? attrs[:foreign_key] : "#{name}_id",
             :path => "/#{name.to_s.pluralize}/:id"
           }.merge(attrs)
           (relationships[:belongs_to] ||= []) << attrs
